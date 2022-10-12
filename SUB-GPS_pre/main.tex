@@ -41,12 +41,12 @@
 %     }}
 
 % INTRO
-\begin{frame}{Interference effect in causal inference}
+\begin{frame}{Related literature}
 \begin{columns}[T] % align columns
 \begin{column}{0.95\textwidth}
   \begin{wideitemize}
   \item assume no interference effect  [contained in SUTVA,Rubin \href{https://www.jstor.org/stable/2287653}{\textcolor{blue}{ 1980}}] ,   \item unreasonable and risky (Sobel \href{https://www.tandfonline.com/doi/abs/10.1198/016214506000000636}{\textcolor{blue}{2006}})
-  \item Experimental studies : 
+  \item Experimental studies 
   \begin{itemize}
   \vspace{10pt}
       \item cluster randomized trials , two stage randomization (Hudgens and Halloran \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2600548/}{\textcolor{blue}{2008}}; Sinclair \href{https://www.cambridge.org/core/books/abs/cambridge-handbook-of-experimental-political-science/design-and-analysis-of-experiments-in-multilevel-populations/5A74D87743BB688894BB8002A837C402}{\textcolor{blue}{2011}}) , Insulated Neighbors Randomization (Toulis and Kao \href{https://proceedings.mlr.press/v28/toulis13.html}{\textcolor{blue}{2013}}) 
@@ -63,7 +63,7 @@
 
 
 
-\begin{frame}{Interference effect in causal inference}
+\begin{frame}{Related literature}
 \begin{columns}[T] % align columns
 \begin{column}{0.95\textwidth}
   \begin{wideitemize}
@@ -242,7 +242,7 @@ Under SUTVA ,average (individual) treatment effect : $\tau_{sutva}=E[Y_i(Z_i=1)-
 \vspace{1em}
 \begin{block}{Naive estimator}
 \centering
-$\tau_{\mathbf{X}^\star}^{obs}=\sum_{\mathbf{x} \in \mathcal{X}^\star}(E[Y_i|Z_i=1,\mathbf{X}_{i}^\star]-E[Y_i|Z_i=1,\mathbf{X}_{i}^\star])P(\mathbf{X}_{i}^\star=\mathbf{x})$
+$\tau_{\mathbf{X}^\star}^{obs}=\sum_{\mathbf{x} \in \mathcal{X}^\star}(E[Y_i|Z_i=1,\mathbf{X}_{i}^\star]-E[Y_i|Z_i=0,\mathbf{X}_{i}^\star])P(\mathbf{X}_{i}^\star=\mathbf{x})$
 \end{block}
 %
 \vspace{1em}
@@ -251,7 +251,7 @@ The difference between $\tau$  and the quantity $\tau_{\mathbf{X}^\star}^{obs}$ 
 
 \begin{frame}{Bias of Naive Estimator When Unconfoudedness Holds}
 \begin{block}{Theorem 2.A} \label{theorem 2.A}
-Let $G=(\mathcal{N},\mathbb{E}$ be a known social network and lei $\mathcal{N}_i$ be the neighborhood of unit i asa defined by the presence of edges . Let $Z_i \in \{0,1\}$ be a binary treatment assigned to unit i and let $G_i$ be a deterministic function of the subset of the treatment vector $\mathbf{Z}$ in the neighborhood $\mathcal{N}_i$ , that is , $ G_i = g_i(\mathbf{Z}_{\mathcal{N}_i})$ , with $g_i : \{0,1\}^{N_i} \rightarrow \mathcal{G}_i$ . If
+Let $G=(\mathcal{N},\mathbb{E}$) be a known social network and lei $\mathcal{N}_i$ be the neighborhood of unit i asa defined by the presence of edges . Let $Z_i \in \{0,1\}$ be a binary treatment assigned to unit i and let $G_i$ be a deterministic function of the subset of the treatment vector $\mathbf{Z}$ in the neighborhood $\mathcal{N}_i$ , that is , $ G_i = g_i(\mathbf{Z}_{\mathcal{N}_i})$ , with $g_i : \{0,1\}^{N_i} \rightarrow \mathcal{G}_i$ . If
 \begin{enumerate}
     \item \hyperlink{assump1}{\textcolor{blue}{Assumption 1}} holds
     \item \hyperlink{assump2}{\textcolor{blue}{Assumption 2}} holds , given function $g_i(\cdot)$ for each unit $i \in \mathcal{N}$
@@ -259,7 +259,7 @@ Let $G=(\mathcal{N},\mathbb{E}$ be a known social network and lei $\mathcal{N}_i
 \end{enumerate}
 then the following equality holds
 \begin{align*}
-\tau_{\mathbf{X}^\star}^{obs}&=\sum_{\mathbf{x} \in \mathcal{X}^\star} \Big( \sum_{g \in \mathcal{G}}E[Y_i(1,g)|\mathbf{X}_{i}^\star = \mathbf{x}, i \in V_g]P(G_i=g | Z_i=1 , \mathb , i \in \matf{X}_{i}^\star=\mathbf{x}) 
+\tau_{\mathbf{X}^\star}^{obs}&=\sum_{\mathbf{x} \in \mathcal{X}^\star} \Big( \sum_{g \in \mathcal{G}}E[Y_i(1,g)|\mathbf{X}_{i}^\star = \mathbf{x}, i \in V_g]P(G_i=g | Z_i=1 , \mathbf{X}_{i}^\star=\mathbf{x}) 
 \\  &  -E[Y_i(0,g)|,\mathbf{X}_{i}^\star =\mathbf{x} , i \in V_g]P(G_i=g | Z_i=0,\mathbf{X}_{i}^\star=\mathbf{x})  \Big)  P(\mathbf{X}_{i}^\star=\mathbf{x}) %
 \end{align*}
 \end{block}
@@ -276,7 +276,7 @@ Under the three conditions of \hyperlink{theorem2.A}{\textcolor{blue}{Theorem 2.
 %
 the following equality holds :
 \begin{equation*}
-    \tau_{\mathbf{X}^\star}^{obs}=\tau
+    \tau_{\mathbf{X}^\star}^{obs}=\tau=\sum_{g \in \mathcal{G}} \left( E[Y_i(1,g)-Y_i(0,g) | i \in \mathbf{V}_g ] \right)P(G_i=g)
 \end{equation*}
 %
 \end{block}
@@ -429,8 +429,8 @@ Bias $ \tau_{\mathbf{X}^\star}^{obs}-\tau $ given only by the unmeasured confoun
     \item Within $B_j$ ,estimate $\mu_j(z,g;V_g)=E[Y_i(z,g)|i \in B_j^g]$ , where $B_j^g=V_g \cap B_j$
     \begin{enumerate}[(a)]
        \item estimate model for $\lambda(g;z;x^g)$ by $f^G(g,z,\mathbf{X}_i^g)$
-       \item estimate model for $Y_i(z,g)$ by $f^{Y}(z,g,\lambda(g;z;\mathbf{X}_i^g))$
-       \item predict $\lambda(g;z;\mathbf{X}_i^g)$ and $Y_i(z,g)$
+       \item predict $\lambda(g;z;\mathbf{X}_i^g)$ and estimate model for $Y_i(z,g)$ by $f^{Y}(z,g,\lambda(g;z;\mathbf{X}_i^g))$
+       \item predict  $Y_i(z,g)$
        \item estimate $\hat{\mu}_j(z,g;V_g)=\sum_{i \in B_j^g} \hat{Y}_i(z,g) / {|B_j^g|}$
     \end{enumerate}
 %
@@ -457,7 +457,7 @@ $\hat{\mu}(z,g;V_g)=\sum_{j=1}^{J} \hat{\mu}_j(z,g;V_g) \pi_j^g$ , where $\pi_{j
         \item validate the analytical derivation of the bias for the main effect when interference is wrongly ruled out
         \item show the performance of the proposed estimators in a realistic sample
     \end{itemize}
-    \item \underline{Data} : We use friendship network data collected through the National Longitudinal Study of Adolescent Health . (29 schools for a total of 16410 students) 
+    \item \underline{Data} : use friendship network data collected through the National Longitudinal Study of Adolescent Health . (29 schools for a total of 16410 students) 
     \item \underline{Variables} 
     \begin{itemize}
         \item $Z_i$ : denote whether student i  was covered  or not by some health insurance
@@ -555,10 +555,9 @@ $\hat{\mu}(z,g;V_g)=\sum_{j=1}^{J} \hat{\mu}_j(z,g;V_g) \pi_j^g$ , where $\pi_{j
     %
     \item $X_i^{ind}=[race_i+grade_i]$ , $X_i^{g}=[race_i , grade_i , friends.race_i ,  friends.grade_i , N_i]$ , $\delta \in (-5,-8,-10)$ corresponding to a low medium and high level of interference
     %
-    \item main effects : $\tau(g)=-10+3g \Longrightarrow \tau=-10+3E[G_i]$
-    $\tau(g)=-15+3\mathbf{I}(\phi(1;\mathbf{X}_{i}^{ind}) \geq 0.7) \  \forall g \in \mathcal{G}  \Longrightarrow \tau=-15+3\mathbf{I}(\phi(1;\mathbf{X}_{i}^{ind}) \geq 0.7) $
+    \item main effects : $\tau(g)=-10+3g \Longrightarrow \tau=-10+3E[G_i] $
     %
-    \item spillover effects : $\delta(g;z)=\delta g 5 g E[\mathbf{I}(\phi(1;\mathbf{X}_{i}^{ind}) \geq 0.7)] - 10 \lambda (g;z,\mathbf{X}_{i}^{g}) \\ \Longrightarrow  \Delta(z)=\delta E[G_i] + 5E[G_i]E[\mathbf{I}(\phi(1;\mathbf{X}_{i}^{ind}) \geq 0.7)] - 10E[\lambda (G_i;z,\mathbf{X}_{i}^{g})] + 3z E[G_i] $
+    \item spillover effects : $\delta(g;z)=\delta g + 5 g E[\mathbf{I}(\phi(1;\mathbf{X}_{i}^{ind}) \geq 0.7)] - 10 \lambda (g;z,\mathbf{X}_{i}^{g})+3zg \\ \Longrightarrow  \Delta(z)=\delta E[G_i] + 5E[G_i]E[\mathbf{I}(\phi(1;\mathbf{X}_{i}^{ind}) \geq 0.7)] - 10E[\lambda (G_i;z,\mathbf{X}_{i}^{g})] + 3z E[G_i] $
     %
 \end{wideitemize}
 \end{column}%
